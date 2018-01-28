@@ -8,10 +8,12 @@ public class PhotoGenerator : MonoBehaviour
 	public int spritePos = 0;
 	private SpriteRenderer spriteR;
 	public Sprite[] sprites;
+	private ReviewGenerator review;
 
 	void Start()
 	{
 		spriteR = gameObject.GetComponent<SpriteRenderer>();
+		review = GameObject.FindObjectOfType<ReviewGenerator>();
 	}
 
 	//Entertainers
@@ -95,5 +97,27 @@ public class PhotoGenerator : MonoBehaviour
 	public void GenerateOutside()
 	{
 		spriteR.sprite = sprites [1];
+	}
+
+	//Face
+	public void GenerateSmallFace()
+	{
+		if (review.score < -2) {
+			spriteR.sprite = sprites [0];
+		} else if (review.score <= 2) {
+			spriteR.sprite = sprites [1];
+		} else {
+			spriteR.sprite = sprites [2];
+		}
+	}
+	public void GenerateBigFace()
+	{
+		if (review.score < -2) {
+			spriteR.sprite = sprites [0];
+		} else if (review.score <= 2) {
+			spriteR.sprite = sprites [1];
+		} else {
+			spriteR.sprite = sprites [2];
+		}
 	}
 }

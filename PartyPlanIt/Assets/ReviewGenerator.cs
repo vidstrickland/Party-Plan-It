@@ -9,7 +9,6 @@ public class ReviewGenerator : MonoBehaviour {
 
     public float score;
 
-
     //Texts
     public List<string> badStart;
     public List<string> midStart;

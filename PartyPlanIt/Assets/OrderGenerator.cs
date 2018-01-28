@@ -297,6 +297,18 @@ public class OrderGenerator : MonoBehaviour
 
 	public int displayCount;
 
+	public GameObject padLockScreen;
+
+	public GameObject waveform;
+
+	public GameObject launchPartyButton;
+
+	public GameObject bigPhoto;
+
+	public GameObject smallPhoto;
+
+	public GameObject largePhoto;
+
     private ReviewGenerator review;
 
     //string[] firstChoiceOptions = {"Complete Message " + firstChoiceSelection, 
@@ -700,8 +712,23 @@ public class OrderGenerator : MonoBehaviour
 	public void DisplayCall(){
 		if (displayCount < 5) {
 			call.text = completeMessage [displayCount];
-
+			waveform.transform.localScale = new Vector3 (315, 150, 1);
+			launchPartyButton.transform.localScale = new Vector3 (0, 0, 0);
 			displayCount++;
+		}else if (displayCount == 5) {
+			call.text = "";
+			padLockScreen.transform.position = new Vector3 (2000, 2000, 0);
+			waveform.transform.localScale = new Vector3 (0, 0, 0);
+			launchPartyButton.transform.localScale = new Vector3 (1, 1, 1);
 		}
+	}
+
+	public void DisplaySmallPhoto(){
+		smallPhoto.transform.localScale = new Vector3 (0.4f, 0.4f, 4.6f);
+	}
+
+	public void DisplayLargePhoto(){
+		largePhoto.transform.localScale = new Vector3 (1f, 1f, 1f);
+		Debug.Log ("Firing");
 	}
 }
